@@ -83,12 +83,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mysite_db_1ryk',
-        'USER': 'admim',
-        'PASSWORD': 'jlKKxhIZbfMzKCGpKGCHtqyJwIJcmmHy',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'USER': os.environ.get('DATABASE_USER', 'admim'),  # Use variável de ambiente ou 'admim' como padrão
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'jlKKxhIZbfMzKCGpKGCHtqyJwIJcmmHy'), # Use variável de ambiente ou senha como padrão
+        'HOST': os.environ.get('DATABASE_HOST', 'dpg-cv5pqh2n91rc73b7djh0-a'), # Use variável de ambiente ou endereço como padrão
+        'PORT': os.environ.get('DATABASE_PORT', '5432'), # Use variável de ambiente ou 5432 como padrão
     }
 }
 
